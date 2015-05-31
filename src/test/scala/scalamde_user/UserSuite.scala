@@ -28,7 +28,7 @@ object UserProperties extends Properties("Propiedades de usuario"){
 
   implicit lazy val arbUsuario: Arbitrary[Usuario] = Arbitrary(usuariosGen)
 
-  property("name size") =
+  property("El tamaño del nombre completo es el tamaño del nombre + el tamaño del apellido + 1") =
     forAll{(usr: Usuario) =>
       usr.getNombreCompleto.length == usr.nombre.length + usr.apellido.length + 1
     }
